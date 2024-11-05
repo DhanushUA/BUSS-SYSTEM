@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Train Details</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Page Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Form Styling */
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        form input, form select, form button {
+            width: calc(100% - 24px);
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            display: block;
+        }
+
+        form button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <form action="/update_train" method="post">
+        <h2>Edit Train Details</h2>
+        <input type="hidden" name="train_id" value="{{ val['train_id'] }}">
+        <input type="text" name="train_name" placeholder="Train Name" value="{{ val['train_name'] }}" required>
+        <input type="text" name="source_station" placeholder="Source Station" value="{{ val['source'] }}" required>
+        <input type="text" name="destination_station" placeholder="Destination Station" value="{{ val['destination'] }}" required>
+        <input type="time" name="arrival_time" placeholder="Arrival Time" value="{{ val['arrival_time'] }}" required>
+        <input type="time" name="departure_time" placeholder="Departure Time" value="{{ val['departure_time'] }}" required>
+        <input type="number" name="total_seats" placeholder="Total Seats" value="{{ val['seats'] }}" required>
+        <input type="date" name="date" placeholder="Date" value="{{ val['date'] }}" required>
+        <button type="submit">Update Train</button>
+    </form>
+
+</body>
+</html>

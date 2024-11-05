@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking History</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4e24a8;
+            color: white;
+        }
+
+        .no-bookings {
+            text-align: center;
+            font-size: 18px;
+            color: #666;
+            margin-top: 40px;
+        }
+        .cancel-button {
+            text-decoration: none;
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cancel-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Booking History</h1>
+
+    {% if val %}
+    <table>
+        <thead>
+            <tr>
+                <th>Booking ID</th>
+                <th>Passenger Name</th>
+                <th>Bus Name</th>
+                <th>Source</th>
+                <th>Destination</th>
+                <th>Seats Booked</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in val %}
+            <tr>
+                <td>booking_id</td>
+                <td>passenger_name</td>
+                <td>train_name</td>
+                <td>source_station</td>
+                <td>destination_station</td>
+                <td>seats_booked</td>
+                <td>
+                    <a class="cancel-button" href="/cancel_booking?booking_id={{ i['booking_id'] }}">Cancel</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div class="no-bookings">No booking history found.</div>
+    {% endif %}
+
+</body>
+</html>
